@@ -18,12 +18,17 @@ const paymentMethods = [
 ];
 
 function calculateReward(amount: number): number {
-  if (amount === 100) return 3;
-  if (amount === 200) return 6;
+  if (amount === 100) return 5;
+  if (amount === 200) return 15;
   if (amount === 300) return 20;
-  if (amount === 400) return 40;
-  if (amount >= 500 && amount <= 1000) return amount * 0.04;
-  if (amount > 1000 && amount <= 90000) return amount * 0.03;
+  if (amount === 400) return 30;
+  if (amount === 500) return 35;
+  if (amount === 600) return 40;
+  if (amount === 700) return 45;
+  if (amount === 800) return 50;
+  if (amount === 900) return 60;
+  if (amount === 1000) return 100;
+  if (amount > 1000 && amount <= 100000) return amount * 0.04;
   return 0;
 }
 
@@ -135,12 +140,13 @@ export default function DepositForm() {
           <div className="bg-muted rounded-lg p-4 text-sm">
             <h4 className="font-semibold mb-2">रिवॉर्ड स्ट्रक्चर:</h4>
             <ul className="space-y-1 text-muted-foreground">
-              <li>• ₹100 → ₹3 रिवॉर्ड</li>
-              <li>• ₹200 → ₹6 रिवॉर्ड</li>
+              <li>• ₹100 → ₹5 रिवॉर्ड</li>
+              <li>• ₹200 → ₹15 रिवॉर्ड</li>
               <li>• ₹300 → ₹20 रिवॉर्ड</li>
-              <li>• ₹400 → ₹40 रिवॉर्ड</li>
-              <li>• ₹500-1000 → 4% रिवॉर्ड</li>
-              <li>• ₹1000-90000 → 3% रिवॉर्ड</li>
+              <li>• ₹400 → ₹30 रिवॉर्ड</li>
+              <li>• ₹500 → ₹35, ₹600 → ₹40, ₹700 → ₹45</li>
+              <li>• ₹800 → ₹50, ₹900 → ₹60, ₹1000 → ₹100</li>
+              <li>• ₹1000 से ₹1,00,000 तक 4% बोनस (स्कीम के अनुसार)</li>
             </ul>
           </div>
 

@@ -25,8 +25,8 @@ export default function WalletDashboard() {
     e.preventDefault();
 
     const amount = parseFloat(withdrawAmount);
-    if (!amount || amount < 20 || amount > 100000) {
-      toast.error('राशि ₹20 से ₹1,00,000 के बीच होनी चाहिए');
+    if (!amount || amount < 455 || amount > 10000) {
+      toast.error('राशि ₹455 से ₹10,000 के बीच होनी चाहिए');
       return;
     }
 
@@ -167,7 +167,7 @@ export default function WalletDashboard() {
                 पैसे निकालें
               </CardTitle>
               <CardDescription>
-                ₹20 से ₹1,00,000 तक UPI से निकालें (24 घंटे में एक बार)
+                ₹455 से ₹10,000 तक UPI से निकालें (24 घंटे में एक बार)
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -181,8 +181,8 @@ export default function WalletDashboard() {
                     value={withdrawAmount}
                     onChange={(e) => setWithdrawAmount(e.target.value)}
                     disabled={isWithdrawing}
-                    min="20"
-                    max="100000"
+                    min="455"
+                    max="10000"
                     step="1"
                   />
                   <p className="text-xs text-muted-foreground">
@@ -223,8 +223,8 @@ export default function WalletDashboard() {
                 <div className="bg-muted rounded-lg p-4 text-sm">
                   <h4 className="font-semibold mb-2">नियम:</h4>
                   <ul className="space-y-1 text-muted-foreground">
-                    <li>• न्यूनतम निकासी: ₹20</li>
-                    <li>• अधिकतम निकासी: ₹1,00,000</li>
+                    <li>• न्यूनतम निकासी: ₹455</li>
+                    <li>• अधिकतम निकासी: ₹10,000</li>
                     <li>• 24 घंटे में एक बार</li>
                     <li>• केवल वेरिफाइड बैलेंस निकाल सकते हैं</li>
                     <li>• एडमिन वेरिफिकेशन के बाद UPI में भेजा जाएगा</li>

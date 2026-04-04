@@ -5,6 +5,9 @@ import { Button } from '../components/ui/button';
 import { Loader2, CheckCircle, XCircle, Clock, Shield } from 'lucide-react';
 import { toast } from 'sonner';
 import { PaymentStatus } from '../backend';
+import { Input } from '../components/ui/input';
+import { Label } from '../components/ui/label';
+import { useState } from 'react';
 import {
   Table,
   TableBody,
@@ -34,8 +37,21 @@ const statusColors = {
 };
 
 export default function AdminDashboard() {
+  const [adminPassword, setAdminPassword] = useState('');
+  const [isUnlocked, setIsUnlocked] = useState(false);
   const { data: requests, isLoading } = useGetAllDepositRequests();
   const verifyPayment = useVerifyPayment();
+  const ADMIN_PANEL_PASSWORD = '@Vivek829465';
+
+  const handleUnlock = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (adminPassword !== ADMIN_PANEL_PASSWORD) {
+      toast.error('गलत एडमिन पासवर्ड');
+      return;
+    }
+    setIsUnlocked(true);
+    toast.success('एडमिन पैनल अनलॉक हो गया');
+  };
 
   const handleVerify = async (requestId: string, status: PaymentStatus) => {
     try {
@@ -58,6 +74,40 @@ export default function AdminDashboard() {
   }
 
   const sortedRequests = [...(requests || [])].sort((a, b) => Number(b.timestamp - a.timestamp));
+
+  if (!isUnlocked) {
+    return (
+      <div className="max-w-md mx-auto">
+        <Card className="shadow-xl">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Shield className="w-5 h-5 text-purple-600" />
+              एडमिन पैनल लॉगिन
+            </CardTitle>
+            <CardDescription>एडमिन पासवर्ड डालकर डिपॉजिट वेरिफिकेशन खोलें</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <form onSubmit={handleUnlock} className="space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="admin-password">एडमिन पासवर्ड</Label>
+                <Input
+                  id="admin-password"
+                  type="password"
+                  value={adminPassword}
+                  onChange={(e) => setAdminPassword(e.target.value)}
+                  placeholder="पासवर्ड दर्ज करें"
+                  required
+                />
+              </div>
+              <Button type="submit" className="w-full">
+                एडमिन पैनल खोलें
+              </Button>
+            </form>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
 
   return (
     <div className="max-w-6xl mx-auto">

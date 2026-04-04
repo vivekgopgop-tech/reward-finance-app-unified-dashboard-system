@@ -38,9 +38,9 @@ export default function DailyRewardDashboard() {
     setIsSpinning(true);
     setReward(null);
 
-    const rewardAmount = Math.floor(Math.random() * 5) + 1;
+    const rewardAmount = Math.floor(Math.random() * 10) + 1;
     const spins = 5 + Math.random() * 3;
-    const finalRotation = rotation + 360 * spins + (rewardAmount - 1) * 72;
+    const finalRotation = rotation + 360 * spins + (rewardAmount - 1) * 36;
 
     setRotation(finalRotation);
 
@@ -72,7 +72,7 @@ export default function DailyRewardDashboard() {
     <div className="space-y-6 max-w-2xl mx-auto">
       <div className="text-center mb-6">
         <h2 className="text-3xl font-bold mb-2">डेली रिवॉर्ड गेम</h2>
-        <p className="text-muted-foreground">स्पिनिंग व्हील घुमाएं और ₹1 से ₹5 तक जीतें</p>
+        <p className="text-muted-foreground">स्पिनिंग व्हील घुमाएं और ₹1 से ₹10 तक जीतें</p>
       </div>
 
       <Card className="shadow-xl">
@@ -91,7 +91,8 @@ export default function DailyRewardDashboard() {
               className="w-full h-full rounded-full border-8 border-primary shadow-2xl transition-transform duration-3000 ease-out"
               style={{
                 transform: `rotate(${rotation}deg)`,
-                background: 'conic-gradient(from 0deg, #10b981 0deg 72deg, #3b82f6 72deg 144deg, #8b5cf6 144deg 216deg, #f59e0b 216deg 288deg, #ef4444 288deg 360deg)',
+                background:
+                  'conic-gradient(from 0deg, #10b981 0deg 36deg, #3b82f6 36deg 72deg, #8b5cf6 72deg 108deg, #f59e0b 108deg 144deg, #ef4444 144deg 180deg, #06b6d4 180deg 216deg, #22c55e 216deg 252deg, #a855f7 252deg 288deg, #f97316 288deg 324deg, #e11d48 324deg 360deg)',
               }}
             >
               <div className="absolute inset-0 flex items-center justify-center">
@@ -99,14 +100,14 @@ export default function DailyRewardDashboard() {
                   <Gift className="w-8 h-8 text-primary" />
                 </div>
               </div>
-              {[1, 2, 3, 4, 5].map((num, index) => (
+              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num, index) => (
                 <div
                   key={num}
-                  className="absolute text-white font-bold text-xl"
+                  className="absolute text-white font-bold text-sm"
                   style={{
                     top: '50%',
                     left: '50%',
-                    transform: `rotate(${index * 72 + 36}deg) translateY(-90px)`,
+                    transform: `rotate(${index * 36 + 18}deg) translateY(-94px)`,
                   }}
                 >
                   ₹{num}
@@ -154,7 +155,7 @@ export default function DailyRewardDashboard() {
             <h4 className="font-semibold mb-2">नियम:</h4>
             <ul className="space-y-1 text-muted-foreground">
               <li>• दिन में एक बार फ्री स्पिन</li>
-              <li>• ₹1 से ₹5 तक जीत सकते हैं</li>
+              <li>• ₹1 से ₹10 तक जीत सकते हैं</li>
               <li>• रिवॉर्ड तुरंत वॉलेट में जमा होगा</li>
               <li>• अगला स्पिन 24 घंटे बाद</li>
             </ul>

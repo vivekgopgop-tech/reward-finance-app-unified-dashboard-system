@@ -10,8 +10,7 @@ import AdminDashboard from './AdminDashboard';
 import { useGetCallerUserProfile } from '../hooks/useQueries';
 
 const ADMIN_EMAIL = 'vivekgopgop@gmail.com';
-const ADMIN_EMAIL_2 = 'Kumarirani71318@gmail.com';
-const ADMIN_PHONE = '9153873434';
+const ADMIN_PHONE = '9153873437';
 
 export default function UnifiedDashboard() {
   const [activeTab, setActiveTab] = useState('home');
@@ -20,7 +19,6 @@ export default function UnifiedDashboard() {
   // Check if user is authorized admin based on email or phone
   const isAuthorizedAdmin = 
     userProfile?.email === ADMIN_EMAIL || 
-    userProfile?.email === ADMIN_EMAIL_2 ||
     userProfile?.phone === ADMIN_PHONE;
 
   return (
