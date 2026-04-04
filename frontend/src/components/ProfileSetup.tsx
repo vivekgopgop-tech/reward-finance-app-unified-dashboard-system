@@ -11,6 +11,7 @@ export default function ProfileSetup() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
+  const [loginPassword, setLoginPassword] = useState('');
   const saveProfile = useSaveCallerUserProfile();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -20,12 +21,35 @@ export default function ProfileSetup() {
       return;
     }
 
+    if (!email.trim()) {
+      toast.error('कृपया Gmail दर्ज करें');
+      return;
+    }
+
+    if (!phone.trim()) {
+      toast.error('कृपया मोबाइल नंबर दर्ज करें');
+      return;
+    }
+
+    if (loginPassword.trim().length < 6) {
+      toast.error('लॉगिन पासवर्ड कम से कम 6 अक्षर का होना चाहिए');
+      return;
+    }
+
     try {
       await saveProfile.mutateAsync({
         name: name.trim(),
         email: email.trim() || undefined,
         phone: phone.trim() || undefined,
       });
+      localStorage.setItem(
+        'local_login_credentials',
+        JSON.stringify({
+          email: email.trim(),
+          phone: phone.trim(),
+          loginPassword: loginPassword.trim(),
+        })
+      );
       toast.success('प्रोफाइल सफलतापूर्वक बनाई गई!');
     } catch (error) {
       toast.error('प्रोफाइल बनाने में त्रुटि');
@@ -59,18 +83,19 @@ export default function ProfileSetup() {
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="email">ईमेल (वैकल्पिक)</Label>
+              <Label htmlFor="email">Gmail *</Label>
               <Input
                 id="email"
                 type="email"
-                placeholder="आपका ईमेल"
+                placeholder="example@gmail.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 disabled={saveProfile.isPending}
+                required
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="phone">फोन नंबर (वैकल्पिक)</Label>
+              <Label htmlFor="phone">फोन नंबर *</Label>
               <Input
                 id="phone"
                 type="tel"
@@ -78,6 +103,19 @@ export default function ProfileSetup() {
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 disabled={saveProfile.isPending}
+                required
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="password">लॉगिन पासवर्ड *</Label>
+              <Input
+                id="password"
+                type="password"
+                placeholder="कम से कम 6 अक्षर"
+                value={loginPassword}
+                onChange={(e) => setLoginPassword(e.target.value)}
+                disabled={saveProfile.isPending}
+                required
               />
             </div>
             <Button

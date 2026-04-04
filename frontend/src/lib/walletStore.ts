@@ -80,11 +80,16 @@ export const useWalletStore = create<WalletState>()(
 );
 
 function calculateDepositReward(amount: number): number {
-  if (amount === 100) return 3;
-  if (amount === 200) return 6;
+  if (amount === 100) return 5;
+  if (amount === 200) return 15;
   if (amount === 300) return 20;
-  if (amount === 400) return 40;
-  if (amount >= 500 && amount <= 1000) return amount * 0.04;
-  if (amount > 1000 && amount <= 90000) return amount * 0.03;
+  if (amount === 400) return 30;
+  if (amount === 500) return 35;
+  if (amount === 600) return 40;
+  if (amount === 700) return 45;
+  if (amount === 800) return 50;
+  if (amount === 900) return 60;
+  if (amount === 1000) return 100;
+  if (amount > 1000 && amount <= 100000) return amount * 0.04;
   return 0;
 }

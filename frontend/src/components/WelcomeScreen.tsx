@@ -50,20 +50,20 @@ export default function WelcomeScreen() {
           </div>
           <h3 className="text-xl font-bold mb-2">डिपॉजिट रिवॉर्ड</h3>
           <p className="text-muted-foreground mb-4">
-            ₹100 से ₹90,000 तक डिपॉजिट करें और 3-4% तक रिवॉर्ड पाएं
+            ₹100 से ₹1,00,000 तक डिपॉजिट करें और फिक्स + 4% तक बोनस पाएं
           </p>
           <ul className="space-y-2 text-sm">
             <li className="flex items-center gap-2">
               <div className="w-1.5 h-1.5 bg-emerald-600 rounded-full"></div>
-              ₹100 → ₹3 रिवॉर्ड
+              ₹100 → ₹5 रिवॉर्ड
             </li>
             <li className="flex items-center gap-2">
               <div className="w-1.5 h-1.5 bg-emerald-600 rounded-full"></div>
-              ₹500-1000 → 4% रिवॉर्ड
+              ₹500 → ₹35 और ₹1000 → ₹100
             </li>
             <li className="flex items-center gap-2">
               <div className="w-1.5 h-1.5 bg-emerald-600 rounded-full"></div>
-              ₹1000+ → 3% रिवॉर्ड
+              ₹1000+ → 4% रिवॉर्ड
             </li>
           </ul>
         </div>
@@ -74,7 +74,7 @@ export default function WelcomeScreen() {
           </div>
           <h3 className="text-xl font-bold mb-2">डेली रिवॉर्ड गेम</h3>
           <p className="text-muted-foreground mb-4">
-            रोज स्पिनिंग व्हील खेलें और ₹1 से ₹5 तक जीतें
+            रोज स्पिनिंग व्हील खेलें और ₹1 से ₹10 तक जीतें
           </p>
           <ul className="space-y-2 text-sm">
             <li className="flex items-center gap-2">
@@ -114,7 +114,7 @@ export default function WelcomeScreen() {
           </div>
           <h3 className="text-xl font-bold mb-2">सुरक्षित निकासी</h3>
           <p className="text-muted-foreground mb-4">
-            ₹20 से ₹1,00,000 तक UPI से निकालें
+            ₹455 से ₹10,000 तक UPI से निकालें
           </p>
           <ul className="space-y-2 text-sm">
             <li className="flex items-center gap-2">
